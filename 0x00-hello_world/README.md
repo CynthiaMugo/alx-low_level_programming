@@ -1,1 +1,1 @@
-This is a c programming hello world readme
+This is a script that runs a C file through the preprocessor and save the result into another file.
