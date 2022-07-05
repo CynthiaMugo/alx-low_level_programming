@@ -5,11 +5,11 @@
  *followed by a new line
  *Return:0 (Success)
  */
-void print_alphabet(void)
+void print_alphabet(void) /*print_alphabet -> prints alphabet*/
 {
 	int j;
 
-	for(j = 'a'; j <= 'z'; j++)
+	for (j = 'a'; j <= 'z'; j++)
 	{
 		_putchar(j);
 	}
