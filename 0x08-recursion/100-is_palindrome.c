@@ -33,7 +33,7 @@ int Palindrome_Rsv(char *s, int i, int j)
  */
 int is_palindrome(char *s)
 {
-	int len';
+	int len;
 
 	len = _strlen_recursion(s);
 	if (len == 0 || *s != s[len - 1])
