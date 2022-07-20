@@ -3,7 +3,7 @@
 /**
  * factorial -> function factorial
  * @n: number
- * Reeturn: an integer
+ * Return: an integer
  */
 int factorial(int n)
 {
