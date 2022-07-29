@@ -41,7 +41,7 @@ char *create_xarray(int size)
 	if (array == NULL)
 		exit(98);
 
-	for (index = 0; index, (size - 1); index++)
+	for (index = 0; index < (size - 1); index++)
 		array[index] = 'x';
 
 	array[index] = '\0';
@@ -151,9 +151,19 @@ void add_nums(char *final_prod, char *next_prod, int next_len)
 		*final_prod = (num % 10) + '0';
 		tens = num / 10;
 
+		next_prod--;
+		next_len--;
+	}
+
+	for (; next_len >= 0 && *next_prod != 'x'; next_len--)
+	{
+		num = (*next_prod - '0');
+		num += tens;
+		*final_prod = (num % 10) + '0';
+		tens = num / 10;
+
 		final_prod--;
 		next_prod--;
-	}
 
 	if (tens)
 		*final_prod = (tens % 10) + '0';
@@ -196,7 +206,7 @@ int main(int argc, char *argv[])
 	{
 		digit = get_digit(*(argv[2] + index));
 		get_prod(next_prod, argv[1], digit, zeroes++);
-		add_nums(final_pod, next_prod, size - 1);
+		add_nums(final_prod, next_prod, size - 1);
 	}
 
 	for (index = 0; final_prod[index]; index++)
