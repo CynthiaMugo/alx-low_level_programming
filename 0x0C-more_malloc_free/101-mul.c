@@ -185,7 +185,7 @@ int main(int argc, char *argv[])
 	if (argc != 3)
 	{
 		printf("Error\n");
-		return (0);
+		exit(98);
 	}
 
 	if (*(argv[1]) == '0')
