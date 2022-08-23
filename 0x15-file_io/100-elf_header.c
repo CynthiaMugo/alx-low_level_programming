@@ -106,7 +106,7 @@ void print_data(unsigned char *e_ident)
 		printf("2's complement, big endian\n");
 		break;
 		default:
-		printf("Unknown: &x\n", e_ident[EI_CLASS]);
+		printf("Unknown: %x\n", e_ident[EI_CLASS]);
 	}
 }
 
