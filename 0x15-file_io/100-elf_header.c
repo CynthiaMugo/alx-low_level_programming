@@ -261,8 +261,8 @@ void close_elf(int elf)
  * @argc: no of arguments supplied to the program
  * @argv: array of pointers to the arguments
  * Return: 0 on success
- * Description: if the file is not an ELF file or the 
- * functio fails exit code 98
+ * Description: if the file is not an ELF file or the
+ * function fails exit code 98
  */
 int main(int __attribute__((__UNUSED__)) argc, char *argv[])
 {
