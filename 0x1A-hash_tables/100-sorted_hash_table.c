@@ -82,7 +82,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 	new->value = value_copy;
-	new_next = ht->array[index];
+	new->next = ht->array[index];
 	ht->array[index] = new;
 
 	if (ht->shead == NULL)
@@ -154,7 +154,7 @@ void shash_table_print(const shash_table_t *ht)
 	if (ht == NULL)
 		return;
 
-	node = ht->shaed;
+	node = ht->shead;
 	printf("{");
 	while (node != NULL)
 	{
