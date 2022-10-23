@@ -118,7 +118,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 /**
  * shash_table_get -> Retrieve the value associated with
- * 			a key in a sorted hash table
+ * a key in a sorted hash table
  * @ht: a pointer to the sorted hash table
  * @key: the key to get the value of
  * Return: if the key can't be matched - NULL
@@ -141,4 +141,76 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 		node = node->snext;
 
 	return ((node == NULL) ? NULL : node->value);
+}
+
+/**
+ * shash_table_print -> prints a sorted hash table in order
+ * @ht: a pointer to the sorted hash table
+ */
+void shash_table_print(const shash_table_t *ht)
+{
+	shash_node_t *node;
+
+	if (ht == NULL)
+		return;
+
+	node = ht->shaed;
+	printf("{");
+	while (node != NULL)
+	{
+		printf("'%s': '%s'", node->key, node->value);
+		node = node->snext;
+		if (node != NULL)
+			printf(", ");
+	}
+	printf("}\n");
+}
+
+/**
+ * shash_table_print_rev -> prints a sorted hash table in rev order
+ * @ht: a pointer to the sorted hash table
+ */
+void shash_table_print_rev(const shash_table_t *ht)
+{
+	shash_node_t *node;
+
+	if (ht == NULL)
+		return;
+
+	node = ht->stail;
+	printf("{");
+	while (node != NULL)
+	{
+		printf("'%s': '%s'", node->key, node->value);
+		node = node->sprev;
+		if (node != NULL)
+			printf(", ");
+	}
+	printf("}\n");
+}
+
+/**
+ * shash_table_delete -> deletes a sored hash table
+ * @ht: a pointer to the sorted hash table
+ */
+void shash_table_delete(shash_table_t *ht)
+{
+	shash_table_t *head = ht;
+	shash_node_t *node, *tmp;
+
+	if (ht == NULL)
+		return;
+
+	node = ht->shead;
+	while (node)
+	{
+		tmp = node->snext;
+		free(node->key);
+		free(node->value);
+		free(node);
+		node = tmp;
+	}
+
+	free(head->array);
+	free(head);
 }
